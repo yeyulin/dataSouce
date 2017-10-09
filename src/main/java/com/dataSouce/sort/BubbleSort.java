@@ -24,7 +24,7 @@ public class BubbleSort {
 	public static void main(String[] args) {
 		int arr[]  = SortTestHelper.generateRandomArray(10, 0, 10);
 		System.out.println(Arrays.toString(arr));
-		SortTestHelper.sortTest("", arr, BubbleSort::bubbleSort);
+		SortTestHelper.sortTest("冒泡", arr, BubbleSort::bubbleSort);
 		System.out.println(Arrays.toString(arr));
 	}
 }
