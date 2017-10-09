@@ -1,5 +1,7 @@
 package com.dataSouce.test;
 
+import java.util.Arrays;
+
 public class SortTestHelper {
 	public static int[] generateRandomArray(int length,int rangeL,int rangeR) {
 		assert(rangeL<rangeR);
@@ -23,11 +25,14 @@ public class SortTestHelper {
 		}
 		return true;
 	}
+	public static int[] coptIntArray(int arr[]) {
+		return Arrays.copyOfRange(arr, 0, arr.length);
+	}
 	public static void sortTest(String name,int arr[],SortIntefaceHelper helper) {
 		long start=System.currentTimeMillis();
 		helper.sortTest(arr);
-		assert isSort(arr);
 		long end=System.currentTimeMillis();
+		assert isSort(arr);
 		System.out.println(name+":"+(end-start));
 	}
 }
