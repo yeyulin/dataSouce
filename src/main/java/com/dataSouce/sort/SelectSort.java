@@ -17,6 +17,7 @@ public class SelectSort {
 			SortTestHelper.swap(arr, i, minIndex);
 		}
 	}
+	
 	public static void main(String[] args) {
 		int arr[]  = SortTestHelper.generateRandomArray(10, 0, 10);
 		SortTestHelper.sortTest("选择", arr, SelectSort::selectSort);
