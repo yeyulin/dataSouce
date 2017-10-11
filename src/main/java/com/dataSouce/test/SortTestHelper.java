@@ -11,6 +11,21 @@ public class SortTestHelper {
 		}
 		return arr;
 	}
+	public static int[] generateNearRandomArray(int length,int swapTimes) {
+		int arr[]=new int[length];
+		for(int i=0;i<length;i++) {
+			arr[i]=i;
+		}
+		 for( int i = 0 ; i < swapTimes ; i ++ ){
+	            int a = (int)(Math.random() * length);
+	            int b = (int)(Math.random() * length);
+	            int t = arr[a];
+	            arr[a] = arr[b];
+	            arr[b] = t;
+	        }
+
+		return arr;
+	}
 	public static int[] swap(int arr[],int first,int second) {
 		int i=arr[first];
 		arr[first]=arr[second];
