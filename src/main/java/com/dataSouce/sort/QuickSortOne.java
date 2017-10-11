@@ -20,7 +20,7 @@ public class QuickSortOne {
 	//arr[l...p-1]<arr[p] arr[p+1...r]>arr[p];
 	private static int partition(int[] arr, int l, int r) {
 		//解决在近乎有序的情况下排序慢的问题
-		//SortTestHelper.swap(arr,l,(int)(Math.random()*(r-l+1))+l );
+		SortTestHelper.swap(arr,l,(int)(Math.random()*(r-l+1))+l );
 		int temp=arr[l];
 		/*arr[l+1...j]<temp arr[j+1....i)>temp  i是下一个要判断的元素 所以是前闭后开
 		 * 使得初始数组都为空
