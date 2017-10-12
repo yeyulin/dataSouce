@@ -3,7 +3,7 @@ package com.dataSouce.sort;
 
 import com.dataSouce.test.SortTestHelper;
 
-public class QuickSortOne {
+public class QuickSortOneWay {
 	public static  void quickSort(int arr[]) {
 		int length=arr.length;
 		sort(arr,0,length-1);
@@ -42,7 +42,7 @@ public class QuickSortOne {
 		int arr2[] =SortTestHelper.generateNearRandomArray(1000_000, 0);
 		//System.out.println(Arrays.toString(arr));
 		SortTestHelper.sortTest("", coptIntArray, MergeSort::mergeSort);
-		SortTestHelper.sortTest("快速排序一", arr, QuickSortOne::quickSort);
+		SortTestHelper.sortTest("快速排序一", arr, QuickSortOneWay::quickSort);
 		//System.out.println(Arrays.toString(arr));
 	}
 }
