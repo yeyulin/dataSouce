@@ -2,7 +2,7 @@ package com.dataSouce.sort;
 
 import com.dataSouce.test.SortTestHelper;
 
-public class QuickSortTwo {
+public class QuickSortTwoWays {
 	public static  void quickSort(int arr[]) {
 		int length=arr.length;
 		sort(arr,0,length-1);
@@ -45,6 +45,6 @@ public class QuickSortTwo {
 		int[] coptIntArray = SortTestHelper.coptIntArray(arr);
 		//System.out.println(Arrays.toString(arr));
 		SortTestHelper.sortTest("merge", coptIntArray, MergeSort::mergeSort);
-		SortTestHelper.sortTest("quick", arr, QuickSortTwo::quickSort);
+		SortTestHelper.sortTest("quick", arr, QuickSortTwoWays::quickSort);
 	}
 }
