@@ -1,9 +1,7 @@
 package com.dataSouce.heap;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
-import com.dataSouce.test.SortTestHelper;
 
 public class MaxHeap<T extends Comparable> {
 	protected int count;
@@ -26,24 +24,34 @@ public class MaxHeap<T extends Comparable> {
 		count++;
 		shiftUp(count);
 	}
-	 private void ensureCapacityInternal(int minCapacity) {
-		  if (minCapacity - data.length >= 0)
-	            grow(minCapacity);
-	    }
-	 private void grow(int minCapacity) {
-	        // overflow-conscious code
-	        int oldCapacity = data.length;
-	        // oldCapacity >> 1 相当于 oldCapacity/2
-	        int newCapacity = oldCapacity + (oldCapacity >> 1);
-	        if (newCapacity - minCapacity < 0)
-	            newCapacity = minCapacity;
-	        // minCapacity is usually close to size, so this is a win:
-	        data = Arrays.copyOf(data, newCapacity);
-	    }
+	public T pop() {
+		assert (count>0);
+		T t=data[1];
+		swapHeap(1, count);
+		count--;
+		shiftDown(1);
+		return t;
+	}
+	
+	private void shiftDown(int k) {
+		//是否具有右节点
+		while(2*k<=count) {
+			int i=2*k;
+			//存在左节点 且左节点大于右节点
+			if(i+1<=count && data[i+1].compareTo(data[i])>0) {
+				i+=1;
+			}
+			if(data[k].compareTo(data[i])>0) {
+				break;
+			}
+			swapHeap(k, i);
+		}
+	}
 	/***
 	 * @param i 添加元素的下标
 	 * @return 将i 放入到应该的位置 维持最大堆
 	 * */
+	@SuppressWarnings("unchecked")
 	public void shiftUp(int i) {
 		while(i>1 && data[i].compareTo(data[i/2])>0) {
 			swapHeap(i, i/2);
@@ -56,6 +64,18 @@ public class MaxHeap<T extends Comparable> {
         data[i] = data[j];
         data[j] = t;
     }
+    private void ensureCapacityInternal(int minCapacity) {
+		  if (minCapacity - data.length >= 0)
+	            grow(minCapacity);
+	    }
+	 private void grow(int minCapacity) {
+	        int oldCapacity = data.length;
+	        // oldCapacity >> 1 相当于 oldCapacity/2
+	        int newCapacity = oldCapacity + (oldCapacity >> 1);
+	        if (newCapacity - minCapacity < 0)
+	            newCapacity = minCapacity;
+	        data = Arrays.copyOf(data, newCapacity);
+	   }
 	public static void main(String[] args) {
 		 MaxHeap<Integer> maxHeap = new MaxHeap<Integer>(100);
         System.out.println(maxHeap.size());
