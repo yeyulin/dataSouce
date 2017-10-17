@@ -101,10 +101,12 @@ public class PrintableMaxHeap extends MaxHeap<Comparable<Integer>>{
     public static void main(String[] args) {
 
         PrintableMaxHeap maxHeap = new PrintableMaxHeap(1);
-        int N = 3; // 堆中元素个数
+        int N = 4; // 堆中元素个数
         int M = 100; // 堆中元素取值范围[0, M)
         for( int i = 0 ; i < N ; i ++ )
             maxHeap.insert( new Integer((int)(Math.random() * M)) );
+        maxHeap.treePrint();
+        maxHeap.pop();
         maxHeap.treePrint();
 
     }
