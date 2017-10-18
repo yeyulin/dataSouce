@@ -11,6 +11,14 @@ public class SortTestHelper {
 		}
 		return arr;
 	}
+	public static Integer[] generateRandomArrayInteger(int length,int rangeL,int rangeR) {
+		assert(rangeL<rangeR);
+		Integer arr[]=new Integer[length];
+		for(int i=0;i<length;i++) {
+			arr[i]=(int) (Math.random()*(rangeR-rangeL+1)+rangeL);
+		}
+		return arr;
+	}
 	public static int[] generateNearRandomArray(int length,int swapTimes) {
 		int arr[]=new int[length];
 		for(int i=0;i<length;i++) {
