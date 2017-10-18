@@ -12,6 +12,24 @@ public class MaxHeap<T extends Comparable> {
 		data = (T[])new Comparable[capacity+1];
 		count=0;
 	}
+	/**
+	 * 构造函数, 通过一个给定数组创建一个最大堆
+	 * heapify操作
+	 * 所有的没有子节点的页子节点本身就是一个最大堆
+	 * 从后往前看 第一个不是页子节点的子节点的索引是 元素的个数/2
+	 * 
+	 * */
+	public MaxHeap(T arr[]) {
+		data=(T[]) new Comparable[arr.length+1];
+		for(int i=0,length=arr.length;i<length;i++) {
+			data[i+1]=arr[i];
+			count=length;
+		}
+		for(int i=count/2;i>=1;i--) {
+			shiftDown(i);
+		}
+		
+	}
 	public int size() {
 		return count;
 	}
@@ -45,6 +63,7 @@ public class MaxHeap<T extends Comparable> {
 				break;
 			}
 			swapHeap(k, i);
+			k=i;
 		}
 	}
 	/***
@@ -78,6 +97,22 @@ public class MaxHeap<T extends Comparable> {
 	   }
 	public static void main(String[] args) {
 		 MaxHeap<Integer> maxHeap = new MaxHeap<Integer>(100);
-        System.out.println(maxHeap.size());
+	        int N = 100; // 堆中元素个数
+	        int M = 100; // 堆中元素取值范围[0, M)
+	        for( int i = 0 ; i < N ; i ++ )
+	            maxHeap.insert( new Integer((int)(Math.random() * M)) );
+
+	        Integer[] arr = new Integer[N];
+	        // 将maxheap中的数据逐渐使用pop取出来
+	        // 取出来的顺序应该是按照从大到小的顺序取出来的
+	        for( int i = 0 ; i < N ; i ++ ){
+	            arr[i] = maxHeap.pop();
+	            System.out.print(arr[i] + " ");
+	        }
+	        System.out.println();
+
+	        // 确保arr数组是从大到小排列的
+	        for( int i = 1 ; i < N ; i ++ )
+	            assert arr[i-1] >= arr[i];
     }
 }
