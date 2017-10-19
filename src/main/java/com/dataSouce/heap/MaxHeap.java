@@ -30,6 +30,7 @@ public class MaxHeap<T extends Comparable> {
 		}
 		
 	}
+	
 	public int size() {
 		return count;
 	}
