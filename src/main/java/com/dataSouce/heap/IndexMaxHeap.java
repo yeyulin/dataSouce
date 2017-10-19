@@ -43,5 +43,6 @@ public class IndexMaxHeap<T extends Comparable> {
         IndexMaxHeap<Integer> indexMaxHeap = new IndexMaxHeap<Integer>(N);
         for( int i = 0 ; i < N ; i ++ )
             indexMaxHeap.insert( i , (int)(Math.random()*N) );
+        
 	}
 }
