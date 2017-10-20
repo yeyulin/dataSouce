@@ -46,11 +46,11 @@ public class MergeSort {
 			}else if(ri>right) {
 				arr[i]=aux[li-left];
 				li++;
-			}else if(aux[li-left]>aux[ri-left]) {
-				arr[i]=aux[ri-left];
+			}else if(aux[li-left]<aux[ri-left]) {
+				arr[i]=aux[li-left];
 				ri++;
 			}else {
-				arr[i]=aux[li-left];
+				arr[i]=aux[ri-left];
 				li++;
 			}
 		}
