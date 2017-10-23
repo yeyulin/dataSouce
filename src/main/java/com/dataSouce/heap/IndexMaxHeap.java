@@ -23,7 +23,41 @@ public class IndexMaxHeap<T extends Comparable> {
 	    data[i]=t;
 	    indexes[count+1]=i;
 	    count++;
-	    shilfUp(count);
+	    shiftUp(count);
+	}
+	// 从最大索引堆中取出堆顶元素, 即索引堆中所存储的最大数据
+    public T extractMax(){
+    	  assert count > 0;
+    	T t=data[indexes[1]];
+    	sweapIndex( 1 , count );
+    	count--;
+    	shiftDown(1);
+    	return t;
+    }
+    public void change(int index,T t) {
+    	index++;
+    	data[index]=t;
+    	// 找到indexes[i] = index, i表示data[index]在堆中的位置
+        // 之后shiftUp(i), 再shiftDown(i)
+    	for(int i=0;i<count;i++) {
+    		if(indexes[i]==index) {
+    			shiftDown(i);
+    			shiftUp(i);
+    		}
+    	}
+    }
+	private void shiftDown(int k) {
+		while(2*k<= count) {
+			int j=2*k;
+			if(j+1<=count && data[indexes[j+1]].compareTo(data[indexes[j]])>0) {
+				j++;
+			}
+			if(data[indexes[k]].compareTo(data[indexes[j]])>0) {
+				break;
+			}
+			sweapIndex(k, j);
+			k=j;
+		}
 	}
 	public void sweapIndex(int i,int j) {
 		int t=indexes[i];
@@ -32,7 +66,7 @@ public class IndexMaxHeap<T extends Comparable> {
 		
 	}
 	 // 索引堆中, 数据之间的比较根据data的大小进行比较, 但实际操作的是索引
-	private void shilfUp(int k) {
+	private void shiftUp(int k) {
 		while(k>1 && data[indexes[k/2]].compareTo(data[indexes[k]])<0) {
 			sweapIndex(k, k/2);
 			k/=2;
@@ -43,6 +77,9 @@ public class IndexMaxHeap<T extends Comparable> {
         IndexMaxHeap<Integer> indexMaxHeap = new IndexMaxHeap<Integer>(N);
         for( int i = 0 ; i < N ; i ++ )
             indexMaxHeap.insert( i , (int)(Math.random()*N) );
-        
+        indexMaxHeap.change(2, 100);
+        for(int i=N;i>=1;i--) {
+        	System.out.print(indexMaxHeap.extractMax()+",");
+        }
 	}
 }
