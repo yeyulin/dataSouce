@@ -127,6 +127,30 @@ public class BinarySearchTreeBasics<K extends Comparable<K>,V> {
             return search( node.getRight(), key );
         }
     }
+    //前序遍历 以node为根的二叉搜索树前序遍历
+    public void perOrder(Node node) {
+    	if(node!=null) {
+    		System.out.println(node.getK()+"----->"+node.getV());
+    		perOrder(node.getLeft());
+    		perOrder(node.getRight());
+    	}
+    }
+    //以node为根的二叉搜索树中序遍历 数据是从小到大 排序打印
+    public void inOrder(Node node) {
+    	if(node!=null) {
+    		perOrder(node.getLeft());
+    		System.out.println(node.getK()+"----->"+node.getV());
+    		perOrder(node.getRight());
+    	}
+    }
+  //以node为根的二叉搜索树后序遍历 数据是从小到大 排序打印
+    public void pastOrder(Node node) {
+    	if(node!=null) {
+    		perOrder(node.getLeft());
+    		perOrder(node.getRight());
+    		System.out.println(node.getK()+"----->"+node.getV());
+    	}
+    }
 	public Node getRoot() {
 		return root;
 	}
