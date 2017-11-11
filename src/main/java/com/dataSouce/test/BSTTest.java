@@ -6,7 +6,7 @@ import com.dataSouce.BinarySearchTree.BinarySearchTreeBasics;
 
 public class BSTTest {
 	public static void main(String[] args) {
-		  int N = 10;
+		  int N = 5;
 
 	        // 创建一个数组，包含[0...N)的所有元素
 	        Integer[] arr = new Integer[N];
@@ -30,13 +30,17 @@ public class BSTTest {
 	        
 	       System.out.println( bst.search(2)+"----");
 	       
-	        
+	       bst.perOrder(bst.getRoot());
+	       System.out.println("---------------------");
+	       bst.inOrder(bst.getRoot());
+	       System.out.println("---------------------");
+	       bst.pastOrder(bst.getRoot());
 	       
-	        BinarySearchTreeBasics<Integer, String> bst2 = new BinarySearchTreeBasics<Integer, String>();
-	        for(Integer num: arr)
-	            bst2.insertLoop(num, num.toString());
-	        
-	        System.out.println( bst2.search(2)+"----");
+//	        BinarySearchTreeBasics<Integer, String> bst2 = new BinarySearchTreeBasics<Integer, String>();
+//	        for(Integer num: arr)
+//	            bst2.insertLoop(num, num.toString());
+//	        
+//	        System.out.println( bst2.search(2)+"----");
 	        
 	}
 }
