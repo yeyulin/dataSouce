@@ -156,24 +156,7 @@ public class BinarySearchTreeBasics<K extends Comparable<K>,V> {
 	public void remove(K key) {
 		root=remove(root,key);
 	}
-	// 寻找key的floor值, 递归算法
-    // 如果不存在key的floor值(key比树中的最小值还小), 返回NULL
-	public K floor(K key) {
-		if(count==0 || key.compareTo(minimum())<0) {
-			return null;
-		}
-		Node floorNode=floor(root,key);
-		return floorNode.getK();
-	}
-	// 寻找key的ceil值, 递归算法
-    // 如果不存在key的ceil值(key比树中的最大值还大), 返回NULL
-	public K ceil(K key) {
-		if(count==0 || key.compareTo(minimum())<0) {
-			return null;
-		}
-		Node ceilNode=ceil(root,key);
-		return ceilNode.getK();
-	}
+	
 	//********************
     //* 二分搜索树的辅助函数
     //********************
@@ -374,47 +357,6 @@ public class BinarySearchTreeBasics<K extends Comparable<K>,V> {
 			return successNode;
 		}
 	}
-
-    // 在以node为根的二叉搜索树中, 寻找key的floor值所处的节点, 递归算法
-    private Node floor(Node node, K key){
-    	if(node==null) {
-    		return null;
-    	}
-    	if(key.compareTo(node.getK())==0) {
-    		return node;
-    	}
-    	//如果key小于node的key,则要寻找的key的floor节点一定在node的左子树中
-    	if(key.compareTo(node.getK())<0) {
-    		return floor(node.getLeft(), key);
-    	}
-    	//如果key大于node的key
-    	//node有可能是key的floor节点, 也有可能不是(存在比node->key大但是小于key的其余节点)
-    	Node tempNode=floor(node.getRight(), key);
-    	if(tempNode!=null) {
-    		return tempNode;
-    	}
-    	return node;
-    }
-    // 在以node为根的二叉搜索树中, 寻找key的ceil值所处的节点, 递归算法
-    private Node ceil(Node node, K key){
-    	if(node==null) {
-    		return null;
-    	}
-    	if(key.compareTo(node.getK())==0) {
-    		return node;
-    	}
-    	//如果key大于node的key,则要寻找的key的ceil节点一定在node的右子树中
-    	if(key.compareTo(node.getK())>0) {
-    		return ceil(node.getRight(), key);
-    	}
-    	//如果key小于node的key
-    	//node有可能是key的ceil节点, 也有可能不是(存在比node->key小但是大于key的其余节点)
-    	Node tempNode=ceil(node.getLeft(), key);
-    	if(tempNode!=null) {
-    		return tempNode;
-    	}
-    	return node;
-    }
 	public Node getRoot() {
 		return root;
 	}
