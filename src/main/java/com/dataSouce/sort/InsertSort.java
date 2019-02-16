@@ -8,6 +8,19 @@ public class InsertSort {
 	public static void insertSort(int arr[]) {
 		int length=arr.length;
 		for(int i=1;i<length;i++) {
+			for(int j=i;j>0;j--) {
+				if(arr[j]<arr[j-1]){
+					SortTestHelper.swap(arr, j-1, j);
+				}else{
+					break;
+				}
+				
+			}
+		}
+	}
+	public static void insertSort2(int arr[]) {
+		int length=arr.length;
+		for(int i=1;i<length;i++) {
 			for(int j=i;j>0 && arr[j]<arr[j-1];j--) {
 				SortTestHelper.swap(arr, j-1, j);
 			}
