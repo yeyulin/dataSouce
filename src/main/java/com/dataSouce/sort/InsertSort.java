@@ -31,6 +31,21 @@ public class InsertSort {
 		for(int i=1;i<length;i++) {
 			int temp=arr[i];
 			int j=i;
+			for(;j>0 ;j--) {
+				if(temp<arr[j-1]){
+					arr[j]=arr[j-1];
+				}else{
+					break;
+				}
+			}
+			arr[j]=temp;
+		}
+	}
+	public static void insertSortOptimize2(int arr[]) {
+		int length=arr.length;
+		for(int i=1;i<length;i++) {
+			int temp=arr[i];
+			int j=i;
 			for(;j>0 && temp<arr[j-1];j--) {
 				arr[j]=arr[j-1];
 			}
