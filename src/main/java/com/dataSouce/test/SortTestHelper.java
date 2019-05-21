@@ -2,7 +2,7 @@ package com.dataSouce.test;
 
 import java.util.Arrays;
 
-public class SortTestHelper1 {
+public class SortTestHelper {
 	public static int[] generateRandomArray(int length,int rangeL,int rangeR) {
 		assert(rangeL<rangeR);
 		int arr[]=new int[length];
