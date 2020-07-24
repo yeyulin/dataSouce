@@ -21,17 +21,15 @@ public class InsertSort {
         for (int i = 1; i < arr.length; i++) {
             for (int j = i; j > 0; j--) {
                 if (arr[j - 1] > arr[j]) {
-                    int temp = arr[j];
-                    arr[j] = arr[j - 1];
-                    arr[j - 1] = temp;
+                    SortTestHelper.swap(arr, j, j-1);
                 }
             }
         }
     }
 
     public static void main(String[] args) {
-        int arr[] = SortTestHelper.generateRandomArray(1000000, 0, 10_000_000);
-        SortTestHelper.sortTest("插入", arr, SelectSort::sortTest);
+        int arr[] = SortTestHelper.generateRandomArray(1_00, 0, 10_000_000);
+        SortTestHelper.sortTest("插入", arr, InsertSort::sortTest);
         //System.out.println(Arrays.toString(arr));
     }
 }

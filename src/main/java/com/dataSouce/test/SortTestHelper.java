@@ -64,7 +64,9 @@ public class SortTestHelper {
         long start = System.currentTimeMillis();
         helper.sortTest(arr);
         long end = System.currentTimeMillis();
-        assert isSort(arr);
+        boolean sort = isSort(arr);
+        assert sort;
+        System.out.println(sort);
         System.out.println(name + ":" + (end - start));
     }
 }
