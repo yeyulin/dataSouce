@@ -28,6 +28,9 @@ public class BubboSort {
     public static void main(String[] args) {
         int arr[] = SortTestHelper.generateRandomArray(10_000, 0, 10_000_000);
         SortTestHelper.sortTest("冒泡", arr, BubboSort::sortTest);
+        SortTestHelper.sortTest("冒泡", arr, BubboSort::sortTest);
+        SortTestHelper.sortTest("选择", arr, SelectSort::sortTest);
+        SortTestHelper.sortTest("插入", arr, InsertSort::sortTest);
         //System.out.println(Arrays.toString(arr));
     }
 }
