@@ -37,7 +37,7 @@ public class RbTree2 <K extends Comparable<K>,V>{
 		return x;
 	}
 	private Node balance(Node node) {
-		if() {}
+		//if() {}
 		return node;
 	}
 	private class Node{
