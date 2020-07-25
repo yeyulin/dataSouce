@@ -24,9 +24,26 @@ public class SelectSort {
         }
     }
 
+
+
+    public static void selectSort2(int arr[]){
+        if(arr==null || arr.length<=1){
+            return;
+        }
+        for (int i = 0; i < arr.length; i++) {
+            for (int j=i;j<arr.length;j++){
+                if(arr[i]>arr[j]){
+                    SortTestHelper.swap(arr, i, j);
+                }
+            }
+        }
+    }
+
     public static void main(String[] args) {
-        int arr[] = SortTestHelper.generateRandomArray(100, 0, 1000);
+        int arr[] = SortTestHelper.generateRandomArray(100_000, 0, 100000);
         SortTestHelper.sortTest("选择", arr, SelectSort::sortTest);
-        System.out.println(Arrays.toString(arr));
+        int arr2[] = SortTestHelper.generateRandomArray(100_000, 0, 100000);
+        SortTestHelper.sortTest("选择", arr2, SelectSort::selectSort2);
+        //System.out.println(Arrays.toString(arr));
     }
 }

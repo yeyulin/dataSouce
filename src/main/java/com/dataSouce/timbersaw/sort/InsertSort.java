@@ -2,8 +2,6 @@ package com.dataSouce.timbersaw.sort;
 
 import com.dataSouce.test.SortTestHelper;
 
-import java.util.Arrays;
-
 /**
  * @author yeyulin
  * @description: 就像打牌时整理牌，小的插到左边，大的插到右边
@@ -21,15 +19,28 @@ public class InsertSort {
         for (int i = 1; i < arr.length; i++) {
             for (int j = i; j > 0; j--) {
                 if (arr[j - 1] > arr[j]) {
-                    SortTestHelper.swap(arr, j, j-1);
+                    SortTestHelper.swap(arr, j, j - 1);
+                }
+            }
+        }
+    }
+
+    public static void insertSort2(int arr[]) {
+        SortTestHelper.prefix(arr);
+        for (int i = 1; i < arr.length; i++) {
+            for (int j = i ; j >0; j--) {
+                if(arr[j-1]>arr[j]){
+                    SortTestHelper.swap(arr,j-1,j);
                 }
             }
         }
     }
 
     public static void main(String[] args) {
-        int arr[] = SortTestHelper.generateRandomArray(1_00, 0, 10_000_000);
+        int arr[] = SortTestHelper.generateRandomArray(10_000, 0, 10_000_000);
         SortTestHelper.sortTest("插入", arr, InsertSort::sortTest);
+        int arr2[] = SortTestHelper.generateRandomArray(10_000, 0, 10_000_000);
+        SortTestHelper.sortTest("插入", arr2, InsertSort::insertSort2);
         //System.out.println(Arrays.toString(arr));
     }
 }

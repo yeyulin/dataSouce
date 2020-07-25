@@ -6,6 +6,11 @@ import java.util.Arrays;
  * 排序帮助
  */
 public class SortTestHelper {
+    public static void prefix(int arr[]){
+        if(arr==null || arr.length<=1){
+            return;
+        }
+    }
     public static int[] generateRandomArray(int length, int rangeL, int rangeR) {
         assert (rangeL < rangeR);
         int arr[] = new int[length];
