@@ -19,8 +19,10 @@ public class SelectSort {
 	}
 	
 	public static void main(String[] args) {
-		int arr[]  = SortTestHelper.generateRandomArray(10, 0, 10);
+		int arr[]  = SortTestHelper.generateRandomArray(100_000, 0, 100_000);
 		SortTestHelper.sortTest("选择", arr, SelectSort::selectSort);
-		System.out.println(Arrays.toString(arr));
+        int arr1[]  = SortTestHelper.generateRandomArray(100_000, 0, 100_000);
+        SortTestHelper.sortTest("选择", arr1, com.dataSouce.timbersaw.sort.SelectSort::sortTest);
+		//System.out.println(Arrays.toString(arr));
 	}
 }
