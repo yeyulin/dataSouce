@@ -51,12 +51,46 @@ public class QuickSort {
         return li;
     }
 
+    public void quickSort2(int arr[]) {
+        SortTestHelper.prefix(arr);
+        quickSort2(arr, 0, arr.length - 1);
+    }
+
+    private void quickSort2(int[] arr, int left, int right) {
+        if (left >= right) {
+            return;
+        }
+        //选择合适的数值 p
+        int p = partition2(arr, left, right);
+        quickSort2(arr, left, p-1);
+        quickSort2(arr, p + 1, right);
+    }
+
+    private int partition2(int[] arr, int left, int right) {
+        //SortTestHelper.swap(arr, left, (right - left) / 2 + left);
+        //比较的值
+        int temp = arr[left];
+        //选择合适的数值
+        int li = left;
+        for (int i = left + 1; i <= right; i++) {
+            if (arr[i] < temp) {
+                //表明右边有比选择的值小
+                li++;
+                SortTestHelper.swap(arr, i, li);
+            }
+        }
+        //运行到这里表面 下标再li之前的值都是比temp小
+        //又因为arr[li]<arr[left],需要交换下标
+        SortTestHelper.swap(arr, left, li);
+        return li;
+    }
+
     public static void main(String[] args) {
-        int arr[] = SortTestHelper.generateRandomArray(100_000, 0, 10_000_000);
+        int arr[] = SortTestHelper.generateRandomArray(8905, 0, 10_000_000);
         QuickSort quickSort = new QuickSort();
         SortTestHelper.sortTest("", arr, quickSort::sortTest);
         int arr2[] = SortTestHelper.generateRandomArray(100_000, 0, 10_000_000);
-        SortTestHelper.sortTest("", arr2, QuickSortThreeWays::quickSort);
+        SortTestHelper.sortTest("", arr, quickSort::quickSort2);
 
         int[] arr1 = new int[20];
         int l = 10;
