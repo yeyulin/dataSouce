@@ -46,7 +46,7 @@ public class MergeSort {
             if (li > mind) {
                 arr[i] = aux[ri - left];
                 ri++;
-            } else if (ri >right) {
+            } else if (ri > right) {
                 arr[i] = aux[li - left];
                 li++;
             } else if (aux[li - left] > aux[ri - left]) {
@@ -58,10 +58,60 @@ public class MergeSort {
             }
         }
     }
+
+    public void mergeSort2(int arr[]) {
+        SortTestHelper.prefix(arr);
+        mSort(arr, 0, arr.length - 1);
+    }
+
+    private void mSort(int[] arr, int left, int right) {
+        if (left >= right) {
+            return;
+        }
+        int mid = left / 2 + right / 2;
+        mSort(arr, left, mid);
+        mSort(arr, mid + 1, right);
+        if (arr[mid] > arr[mid + 1]) {
+            mMerge(arr, left, mid, right);
+        }
+    }
+
+    /**
+     * arr[left...mid] arr[mid+1....right]
+     *
+     * @param arr
+     * @param left
+     * @param mid
+     * @param right
+     */
+    private void mMerge(int[] arr, int left, int mid, int right) {
+        int[] aux = Arrays.copyOfRange(arr, left, right + 1);
+        int li=left;
+        int ri=mid+1;
+        for (int i = left; i <=right ; i++) {
+            if(li>mid){
+                arr[i]=aux[ri-left];
+                ri++;
+            }else if(ri>right){
+                arr[i]=aux[li-left];
+                li++;
+            }
+            else if(aux[li-left]>aux[ri-left]){
+                arr[i]=aux[ri-left];
+                ri++;
+            }else{
+                arr[i]=aux[li-left];
+                li++;
+            }
+        }
+    }
+
     public static void main(String[] args) {
         int arr[] = SortTestHelper.generateRandomArray(10_000_000, 0, 10_000_000);
-        MergeSort mergeSort=new MergeSort();
+        MergeSort mergeSort = new MergeSort();
         SortTestHelper.sortTest("归并", arr, mergeSort::sortTest);
+        int arr1[] = SortTestHelper.generateRandomArray(10_000_000, 0, 10_000_000);
+        SortTestHelper.sortTest("归并", arr1, mergeSort::mergeSort2);
         //System.out.println(Arrays.toString(arr));
     }
 
