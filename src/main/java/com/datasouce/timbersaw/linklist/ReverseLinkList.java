@@ -15,14 +15,33 @@ public class ReverseLinkList {
         ListNode pre = null;
         ListNode next = null;
         while (cur != null) {
-            next = cur.getNext();
-            cur.setNext(pre);
+            next = cur.next;
+            cur.next = pre;
             pre = cur;
             cur = next;
 
         }
         return pre;
     }
+
+    public ListNode reserve2(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode cur = head;
+        ListNode next = null;
+        //保存上一次链表的值
+        ListNode pre = null;
+        while (cur != null) {
+            next = cur.next;
+            cur.next = pre;
+            //从新赋值pre
+            pre = cur;
+            cur = next;
+        }
+        return pre;
+    }
+
     public static void main(String[] args) {
         ListNode l1 = new ListNode(1);
         ListNode l2 = new ListNode(2);
@@ -32,11 +51,13 @@ public class ReverseLinkList {
         l2.setNext(l3);
         l3.setNext(l4);
         System.out.println(l1);
-        ReverseLinkList reverseLinkList=new ReverseLinkList();
+        ReverseLinkList reverseLinkList = new ReverseLinkList();
         ListNode reverse = reverseLinkList.reverse(l1);
         System.out.println(reverse);
+        ListNode reverse2 = reverseLinkList.reserve2(reverse);
+        System.out.println(reverse2);
 
-        while (reverse.getNext() != null){
+        while (reverse.getNext() != null) {
             System.out.println(reverse.getVal());
             reverse = reverse.getNext();
         }
