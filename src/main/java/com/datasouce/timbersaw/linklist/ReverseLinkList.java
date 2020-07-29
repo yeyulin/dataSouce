@@ -2,7 +2,7 @@ package com.datasouce.timbersaw.linklist;
 
 /**
  * @author yeyulin
- * @description: 反转
+ * @description: 6 反转
  * @date 2020/7/28 9:06
  **/
 public class ReverseLinkList {
