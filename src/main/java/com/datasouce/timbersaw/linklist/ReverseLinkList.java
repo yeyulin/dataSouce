@@ -63,12 +63,26 @@ public class ReverseLinkList {
         ListNode pre = null;
         while (cur != null) {
             ListNode next = cur.next;
-            cur.next=pre;
-            pre=cur;
+            cur.next = pre;
+            pre = cur;
             cur = next;
         }
         return pre;
     }
+
+    public ListNode reverse5(ListNode head) {
+        ListNode cur = head;
+        ListNode pre = null;
+        while (cur != null) {
+            ListNode next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+
+        }
+        return pre;
+    }
+
 
     public static void main(String[] args) {
         ListNode l1 = new ListNode(1);
@@ -82,7 +96,7 @@ public class ReverseLinkList {
         ReverseLinkList reverseLinkList = new ReverseLinkList();
         ListNode reverse = reverseLinkList.reverse(l1);
         System.out.println(reverse);
-        ListNode reverse2 = reverseLinkList.reverse4(reverse);
+        ListNode reverse2 = reverseLinkList.reverse5(reverse);
         System.out.println(reverse2);
 
         while (reverse.getNext() != null) {
