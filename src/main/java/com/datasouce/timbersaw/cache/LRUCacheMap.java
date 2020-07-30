@@ -11,12 +11,15 @@ import java.util.Map;
 public class LRUCacheMap extends LinkedHashMap {
     private int MAX;
 
+
     public LRUCacheMap(int MAX) {
+        super(MAX, 0.75f, true);
         this.MAX = MAX;
+
     }
 
     @Override
     protected boolean removeEldestEntry(Map.Entry eldest) {
-        return size()>MAX;
+        return size() > MAX;
     }
 }
