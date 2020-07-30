@@ -111,7 +111,7 @@ public class MergeSort {
 
     public void mergeSort3(int arr[]) {
         SortTestHelper.prefix(arr);
-        morge3(arr, 0, arr.length-1);
+        morge3(arr, 0, arr.length - 1);
     }
 
     private void morge3(int[] arr, int left, int right) {
@@ -158,14 +158,52 @@ public class MergeSort {
         }
     }
 
+    public void mergeSort4(int arr[]) {
+        SortTestHelper.prefix(arr);
+        mergeSort4(arr, 0, arr.length - 1);
+    }
+
+    private void mergeSort4(int[] arr, int left, int right) {
+        if (left >= right) {
+            return;
+        }
+        int mid = left / 2 + right / 2;
+        mergeSort4(arr, left, mid);
+        mergeSort4(arr, mid + 1, right);
+        if (arr[mid] > arr[mid + 1]) {
+            mergeSort4(arr, left, mid, right);
+        }
+    }
+
+    private void mergeSort4(int[] arr, int left, int mid, int right) {
+        int[] aux = Arrays.copyOfRange(arr, left, right + 1);
+        int li = left;
+        int ri = mid + 1;
+        for (int i = left; i <= right; i++) {
+            if (li > mid) {
+                arr[i] = aux[ri - left];
+                ri++;
+            } else if (ri > right) {
+                arr[i] = aux[li - left];
+                li++;
+            } else if (aux[li - left] > aux[ri - left]) {
+                arr[i] = aux[ri - left];
+                ri++;
+            } else {
+                arr[i] = aux[li - left];
+                li++;
+            }
+        }
+    }
+
     public static void main(String[] args) {
-        int arr[] = SortTestHelper.generateRandomArray(1_000_000, 0, 10_000_000);
+       // int arr[] = SortTestHelper.generateRandomArray(1_000_000, 0, 10_000_000);
         MergeSort mergeSort = new MergeSort();
-        SortTestHelper.sortTest("归并", arr, mergeSort::sortTest);
-        int arr2[] = SortTestHelper.generateRandomArray(1_000_000, 0, 10_000_000);
-        SortTestHelper.sortTest("归并", arr2, mergeSort::mergeSort2);
+//        SortTestHelper.sortTest("归并", arr, mergeSort::sortTest);
+//        int arr2[] = SortTestHelper.generateRandomArray(1_000_000, 0, 10_000_000);
+//        SortTestHelper.sortTest("归并", arr2, mergeSort::mergeSort2);
         int arr3[] = SortTestHelper.generateRandomArray(1_000_000, 0, 10_000_000);
-        SortTestHelper.sortTest("归并", arr3, mergeSort::mergeSort3);
+        SortTestHelper.sortTest("归并", arr3, mergeSort::mergeSort4);
         //System.out.println(Arrays.toString(arr));
     }
 

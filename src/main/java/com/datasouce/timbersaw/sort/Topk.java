@@ -42,9 +42,38 @@ public class Topk {
         return result;
     }
 
+    public List<Integer> topKFrequent2(int[] source, int k) {
+        Map<Integer, Integer> echoMap = new HashMap<>();
+        int one = 1;
+        for (int i = 0; i < source.length; i++) {
+            Integer integer = echoMap.get(source[i]);
+            if (integer == null) {
+                echoMap.put(source[i], one);
+                continue;
+            }
+            echoMap.put(source[i], integer + one);
+        }
+        Set<Map.Entry<Integer,Integer>>set=echoMap.entrySet();
+        List[]souList=new ArrayList[source.length];
+        for (Map.Entry<Integer, Integer> entry : set) {
+            Integer key = entry.getKey();
+            Integer value = entry.getValue();
+            souList[value]=new ArrayList<>();
+            souList[value].add(key);
+        }
+        List<Integer>resut=new ArrayList<>();
+        for(int i=souList.length-1;i>k;i--){
+            if(souList[i]==null){
+                continue;
+            }
+            resut.addAll(souList[i]);
+        }
+        return resut;
+    }
+
     public static void main(String[] args) {
-        Topk topk=new Topk();
-        List<Integer> integers =topk.topKFrequent(new int[]{8, 8, 8, 8, 7, 7, 7, 2, 2}, 2);
+        Topk topk = new Topk();
+        List<Integer> integers = topk.topKFrequent2(new int[]{8, 8, 8, 8, 7, 7, 7, 2, 2}, 2);
         for (int i = 0; i < integers.size(); i++) {
             System.out.println(integers.get(i));
         }
