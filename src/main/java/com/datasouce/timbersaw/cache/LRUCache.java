@@ -16,27 +16,44 @@ public class LRUCache {
     }
 
     public Object get(Object key) {
-        return lruCacheMap.get(key);
+        if (lruCacheMap.containsKey(key)) {
+            Object value = lruCacheMap.get(key);
+            //先删除，然后重新移除
+            lruCacheMap.remove(key);
+            lruCacheMap.put(key, value);
+            return value;
+        }
+        return null;
     }
 
     public void set(Object key, Object value) {
         lruCacheMap.put(key, value);
     }
 
-    public static void main(String[] args) {
-        LRUCache lrucache = new LRUCache(4);
-        lrucache.set(1, 100);
-        lrucache.set(10, 99);
-        lrucache.set(15, 98);
-        lrucache.set(12, 96);
-        lrucache.set(18, 95);
-        lrucache.set(1, 94);
+    public void entrySet() {
+        Set<Map.Entry> set = lruCacheMap.entrySet();
 
-        Set<Map.Entry> set = lrucache.lruCacheMap.entrySet();
         for (Map.Entry entry : set) {
             Object key = entry.getKey();
             Object value = entry.getValue();
             System.out.println(key + "====" + value);
         }
+    }
+
+    public static void main(String[] args) {
+        LRUCache cache = new LRUCache(3);
+        cache.set("1", "1");
+        cache.set("2", "2");
+        cache.set("3", "3");
+
+        Object o = cache.get("4");
+        cache.get("1");
+        cache.get("2");
+        cache.entrySet();
+        //3-1-2
+        //1-2-4
+        cache.set("4", "4");
+
+        cache.entrySet();
     }
 }
