@@ -7,13 +7,13 @@ package com.datasouce.timbersaw.linklist;
  **/
 public class ReverseLinkList {
 
-    public ListNode reverse(ListNode head) {
+    public Node reverse(Node head) {
         if (head == null || head.getNext() == null) {
             return head;
         }
-        ListNode cur = head;
-        ListNode pre = null;
-        ListNode next = null;
+        Node cur = head;
+        Node pre = null;
+        Node next = null;
         while (cur != null) {
             next = cur.next;
             cur.next = pre;
@@ -24,14 +24,14 @@ public class ReverseLinkList {
         return pre;
     }
 
-    public ListNode reserve2(ListNode head) {
+    public Node reserve2(Node head) {
         if (head == null || head.next == null) {
             return head;
         }
-        ListNode cur = head;
-        ListNode next = null;
+        Node cur = head;
+        Node next = null;
         //保存上一次链表的值
-        ListNode pre = null;
+        Node pre = null;
         while (cur != null) {
             next = cur.next;
             cur.next = pre;
@@ -42,13 +42,13 @@ public class ReverseLinkList {
         return pre;
     }
 
-    public ListNode reverse3(ListNode head) {
+    public Node reverse3(Node head) {
         if (head == null || head.next == null) {
             return head;
         }
-        ListNode cur = head;
-        ListNode next = null;
-        ListNode pre = null;
+        Node cur = head;
+        Node next = null;
+        Node pre = null;
         while (cur != null) {
             next = cur.next;
             cur.next = pre;
@@ -58,11 +58,11 @@ public class ReverseLinkList {
         return pre;
     }
 
-    public ListNode reverse4(ListNode head) {
-        ListNode cur = head;
-        ListNode pre = null;
+    public Node reverse4(Node head) {
+        Node cur = head;
+        Node pre = null;
         while (cur != null) {
-            ListNode next = cur.next;
+            Node next = cur.next;
             cur.next = pre;
             pre = cur;
             cur = next;
@@ -70,11 +70,11 @@ public class ReverseLinkList {
         return pre;
     }
 
-    public ListNode reverse5(ListNode head) {
-        ListNode cur = head;
-        ListNode pre = null;
+    public Node reverse5(Node head) {
+        Node cur = head;
+        Node pre = null;
         while (cur != null) {
-            ListNode next = cur.next;
+            Node next = cur.next;
             cur.next = pre;
             pre = cur;
             cur = next;
@@ -85,18 +85,18 @@ public class ReverseLinkList {
 
 
     public static void main(String[] args) {
-        ListNode l1 = new ListNode(1);
-        ListNode l2 = new ListNode(2);
-        ListNode l3 = new ListNode(3);
-        ListNode l4 = new ListNode(4);
+        Node l1 = new Node(1);
+        Node l2 = new Node(2);
+        Node l3 = new Node(3);
+        Node l4 = new Node(4);
         l1.setNext(l2);
         l2.setNext(l3);
         l3.setNext(l4);
         System.out.println(l1);
         ReverseLinkList reverseLinkList = new ReverseLinkList();
-        ListNode reverse = reverseLinkList.reverse(l1);
+        Node reverse = reverseLinkList.reverse(l1);
         System.out.println(reverse);
-        ListNode reverse2 = reverseLinkList.reverse5(reverse);
+        Node reverse2 = reverseLinkList.reverse5(reverse);
         System.out.println(reverse2);
 
         while (reverse.getNext() != null) {
