@@ -6,7 +6,7 @@ package com.datasouce.timbersaw.linklist;
  * @date 2020/7/31 8:31
  **/
 public class LinkedSort {
-    public static Node quickSort(Node head) {
+    public Node quickSort(Node head) {
         //边界值判断
         if (head == null || head.next == null) {
             return head;
@@ -32,6 +32,28 @@ public class LinkedSort {
         return head;
     }
 
+    public Node quickSort2(Node head) {
+        Node cur = head;
+        while (cur != null) {
+            int curVal = cur.val;
+            Node next = cur.next;
+            while (next != null) {
+                int val = next.val;
+                if (curVal > val) {
+                    int temp = curVal;
+                    curVal = val;
+                    val = temp;
+                    cur.val = curVal;
+                    next.val = val;
+                }
+                next = next.next;
+            }
+            cur = cur.next;
+
+        }
+        return head;
+    }
+
     public static void main(String[] args) {
         Node node1 = new Node(5);
         Node node2 = new Node(4);
@@ -40,7 +62,8 @@ public class LinkedSort {
         node1.setNext(node2);
         node2.setNext(node3);
         node3.setNext(node4);
-        Node node = quickSort(node1);
+        LinkedSort linkedSort = new LinkedSort();
+        Node node = linkedSort.quickSort2(node1);
 
         while (node != null) {
             System.out.println(node.val);
