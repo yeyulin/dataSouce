@@ -23,25 +23,40 @@ public class SelectSort {
     }
 
 
-
-    public static void selectSort2(int arr[]){
-        if(arr==null || arr.length<=1){
+    public static void selectSort2(int arr[]) {
+        if (arr == null || arr.length <= 1) {
             return;
         }
         for (int i = 0; i < arr.length; i++) {
-            for (int j=i;j<arr.length;j++){
-                if(arr[i]>arr[j]){
+            for (int j = i; j < arr.length; j++) {
+                if (arr[i] > arr[j]) {
                     SortTestHelper.swap(arr, i, j);
                 }
             }
         }
     }
 
+    public void selectSort3(int arr[]){
+        int length=arr.length;
+        for(int i=0;i<length;i++){
+            for(int j=i;j<length;j++){
+                if(arr[i]>arr[j]){
+                    int temp=arr[i];
+                    arr[i]=arr[j];
+                    arr[j]=temp;
+                }
+            }
+        }
+    }
+
     public static void main(String[] args) {
-        int arr[] = SortTestHelper.generateRandomArray(100_000, 0, 100000);
+        int arr[] = SortTestHelper.generateRandomArray(10_000, 0, 100000);
         SortTestHelper.sortTest("选择", arr, SelectSort::sortTest);
-        int arr2[] = SortTestHelper.generateRandomArray(100_000, 0, 100000);
+        int arr2[] = SortTestHelper.generateRandomArray(10_000, 0, 100000);
         SortTestHelper.sortTest("选择", arr2, SelectSort::selectSort2);
+        int arr3[] = SortTestHelper.generateRandomArray(10_000, 0, 100000);
+        SelectSort selectSort=new SelectSort();
+        SortTestHelper.sortTest("选择", arr3, selectSort::selectSort3);
         //System.out.println(Arrays.toString(arr));
     }
 }

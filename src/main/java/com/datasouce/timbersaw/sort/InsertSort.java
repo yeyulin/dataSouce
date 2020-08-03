@@ -28,9 +28,20 @@ public class InsertSort {
     public static void insertSort2(int arr[]) {
         SortTestHelper.prefix(arr);
         for (int i = 1; i < arr.length; i++) {
-            for (int j = i ; j >0; j--) {
-                if(arr[j-1]>arr[j]){
-                    SortTestHelper.swap(arr,j-1,j);
+            for (int j = i; j > 0; j--) {
+                if (arr[j - 1] > arr[j]) {
+                    SortTestHelper.swap(arr, j - 1, j);
+                }
+            }
+        }
+    }
+
+    public void insertSort3(int arr[]) {
+        int length = arr.length;
+        for (int i = 1; i < length; i++) {
+            for (int j = i; j > 0; j--) {
+                if (arr[j - 1] > arr[j]) {
+                    SortTestHelper.swap(arr, j - 1, j);
                 }
             }
         }
@@ -41,6 +52,9 @@ public class InsertSort {
         SortTestHelper.sortTest("插入", arr, InsertSort::sortTest);
         int arr2[] = SortTestHelper.generateRandomArray(10_000, 0, 10_000_000);
         SortTestHelper.sortTest("插入", arr2, InsertSort::insertSort2);
+        int arr3[] = SortTestHelper.generateRandomArray(10_000, 0, 10_000_000);
+        InsertSort insertSort=new InsertSort();
+        SortTestHelper.sortTest("插入", arr3, insertSort::insertSort3);
         //System.out.println(Arrays.toString(arr));
     }
 }

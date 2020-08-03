@@ -27,26 +27,38 @@ public class BubboSort {
 
     public static void bubboSort2(int arr[]) {
         SortTestHelper.prefix(arr);
-        boolean flag=true;
+        boolean flag = true;
         for (int i = 0; i < arr.length && flag; i++) {
-            flag=false;
-            for (int j = 1; j < arr.length - i ; j++) {
-                if (arr[j-1] > arr[j ]) {
-                    SortTestHelper.swap(arr,j,j-1);
-                    flag=true;
+            flag = false;
+            for (int j = 1; j < arr.length - i; j++) {
+                if (arr[j - 1] > arr[j]) {
+                    SortTestHelper.swap(arr, j, j - 1);
+                    flag = true;
+                }
+            }
+        }
+    }
+
+    public void bubboSort3(int arr[]) {
+        int length = arr.length;
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < length - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    SortTestHelper.swap(arr,j,j+1);
                 }
             }
         }
     }
 
     public static void main(String[] args) {
-        int arr[] = SortTestHelper.generateRandomArray(10_000, 0, 10_000_000);
-        SortTestHelper.sortTest("冒泡", arr, BubboSort::sortTest);
-        SortTestHelper.sortTest("冒泡", arr, BubboSort::sortTest);
-        SortTestHelper.sortTest("选择", arr, SelectSort::sortTest);
-        SortTestHelper.sortTest("插入", arr, InsertSort::sortTest);
-        int arr1[] = SortTestHelper.generateRandomArray(100_000, 0, 10_000_000);
-        SortTestHelper.sortTest("冒泡", arr1, BubboSort::bubboSort2);
+//        int arr[] = SortTestHelper.generateRandomArray(10_000, 0, 10_000_000);
+//        SortTestHelper.sortTest("冒泡", arr, BubboSort::sortTest);
+//        SortTestHelper.sortTest("冒泡", arr, BubboSort::sortTest);
+//        SortTestHelper.sortTest("选择", arr, SelectSort::sortTest);
+//        SortTestHelper.sortTest("插入", arr, InsertSort::sortTest);
+        int arr1[] = SortTestHelper.generateRandomArray(10_000, 0, 10_000_000);
+        BubboSort bubboSort=new BubboSort();
+        SortTestHelper.sortTest("冒泡", arr1, bubboSort::bubboSort3);
         //System.out.println(Arrays.toString(arr));
     }
 }
