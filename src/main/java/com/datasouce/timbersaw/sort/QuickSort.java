@@ -83,13 +83,39 @@ public class QuickSort {
         SortTestHelper.swap(arr, left, li);
         return li;
     }
+    public void quickSort3(int arr[]){
+        quickSort3(arr,0,arr.length-1);
+    }
+    private void quickSort3(int[]arr,int left,int right){
+        if(left>=right){
+            return;
+        }
+        int p=partition3(arr,left,right);
+        quickSort3(arr,left,p);
+        quickSort3(arr,p+1,right);
+    }
+    private Integer partition3(int[]arr,int left,int right){
+        int temp=arr[left];
+        int li=left;
+        for(int i=left;i<=right;i++){
+            if(arr[i]<temp){
+                li++;
+                int tt=arr[i];
+                arr[i]=arr[li];
+                arr[li]=tt;
 
+            }
+        }
+        arr[left]=arr[li];
+        arr[li]=temp;
+        return li;
+    }
     public static void main(String[] args) {
         int arr[] = SortTestHelper.generateRandomArray(8905, 0, 10_000_000);
         QuickSort quickSort = new QuickSort();
         SortTestHelper.sortTest("", arr, quickSort::sortTest);
         int arr2[] = SortTestHelper.generateRandomArray(100_000, 0, 10_000_000);
-        SortTestHelper.sortTest("", arr, quickSort::quickSort2);
+        SortTestHelper.sortTest("", arr2, quickSort::quickSort3);
 
         int[] arr1 = new int[20];
         int l = 10;
