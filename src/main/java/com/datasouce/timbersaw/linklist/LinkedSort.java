@@ -53,6 +53,29 @@ public class LinkedSort {
         }
         return head;
     }
+    public Node linkSort3(Node head){
+        if(head==null || head.next==null){
+            return head;
+        }
+        Node cur=head;
+        while(cur.next!=null){
+            int curValue=cur.val;
+            Node nextNode=cur.next;
+            while(nextNode!=null){
+                int nextVal=nextNode.val;
+                if(curValue>nextVal){
+                    int temp=curValue;
+                    curValue=nextVal;
+                    nextVal=temp;
+                    cur.val=curValue;
+                    nextNode.val=nextVal;
+                }
+                nextNode=nextNode.next;
+            }
+            cur=cur.next;
+        }
+        return head;
+    }
 
     public static void main(String[] args) {
         Node node1 = new Node(5);
@@ -63,7 +86,7 @@ public class LinkedSort {
         node2.setNext(node3);
         node3.setNext(node4);
         LinkedSort linkedSort = new LinkedSort();
-        Node node = linkedSort.quickSort2(node1);
+        Node node = linkedSort.linkSort3(node1);
 
         while (node != null) {
             System.out.println(node.val);
