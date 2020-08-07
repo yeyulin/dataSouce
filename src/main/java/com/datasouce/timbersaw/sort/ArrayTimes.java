@@ -21,10 +21,25 @@ public class ArrayTimes {
         }
         return -1;
     }
+    public int sortTimes2(int[]arr,int num){
+        int result=0;
+        if(arr==null || arr.length==0){
+            return result;
+        }
+
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]==num){
+                result++;
+            }
+        }
+        return result;
+    }
 
     public static void main(String[] args) {
         ArrayTimes arrayTimes = new ArrayTimes();
-        int f = arrayTimes.sortTimes(new int[]{1, 222, 222, 222, 2345, 7891, 7891, 6666}, 222 );
+        int[] ints = {1, 222, 222, 222, 2345, 7891, 7891, 6666};
+        int f = arrayTimes.sortTimes(ints, 222 );
         System.out.println(f);
+        System.out.println(arrayTimes.sortTimes2(ints,222));
     }
 }
