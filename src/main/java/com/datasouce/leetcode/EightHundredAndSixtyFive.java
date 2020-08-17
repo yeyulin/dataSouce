@@ -1,5 +1,9 @@
 package com.datasouce.leetcode;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+
 /**
  * @author yeyulin
  * @description: 865 具有所有最深结点的最小子树
@@ -38,6 +42,12 @@ public class EightHundredAndSixtyFive {
         int left = deep(root.left);
         int right = deep(root.right);
         return left > right ? left + 1 : right + 1;
+    }
+
+    public static void main(String[] args) {
+        Date tradeTime = new Date();
+        LocalDate localDate = tradeTime.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        System.out.println(localDate.toString());
     }
 
 
