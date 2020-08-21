@@ -1,6 +1,8 @@
 package com.datasouce.leetcode.twohundred;
 
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,5 +29,20 @@ public class TwoHundredAndSeventeen {
         int[]nums=new int[]{1,2,3,4,5,6,7,7};
         boolean b = twoHundredAndSeventeen.containsDuplicate(nums);
         System.out.println(b);
+        LocalDate now = LocalDate.now();
+        LocalDate localDate = now.plusDays(-7);
+        //System.out.println(localDate.toString());
+        String param="2020-07-12";
+        LocalDate parse = LocalDate.parse(param, DateTimeFormatter.ISO_DATE);
+
+        while (true){
+            if(parse.isAfter(now)){
+                break;
+            }
+            System.out.println(parse.toString());
+            parse = parse.plusDays(1);
+
+        }
+
     }
 }
