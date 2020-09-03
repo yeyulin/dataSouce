@@ -1,4 +1,4 @@
-package com.datasouce.leetcode;
+package com.datasouce.leetcode.onehundred;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package com.datasouce.leetcode;
+package com.datasouce.leetcode.onehundred;
 
 /**
  * 122 买卖股票的最佳时机 II

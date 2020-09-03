@@ -16,7 +16,7 @@ import lombok.ToString;
 @ToString
 public class TreeNode {
     public int val;
-    TreeNode left;
+    public TreeNode left;
     public TreeNode right;
 
     public TreeNode(int val) {
