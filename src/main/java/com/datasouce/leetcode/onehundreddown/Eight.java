@@ -1,4 +1,4 @@
-package com.datasouce.leetcode.onehundred;
+package com.datasouce.leetcode.onehundreddown;
 
 /**
  * @author yeyulin 2020-09-09
