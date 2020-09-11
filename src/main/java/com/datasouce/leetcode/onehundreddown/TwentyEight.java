@@ -1,5 +1,8 @@
 package com.datasouce.leetcode.onehundreddown;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
 /**
  * @author yeyulin 2020-09-10
  *         28 实现 strStr()
@@ -52,6 +55,16 @@ public class TwentyEight {
         System.out.println(twentyEight.strStr("aaa", "aaaa"));
         System.out.println(twentyEight.strStr("mississippi", "issip"));
         System.out.println(twentyEight.strStr("mississippi", "sippia"));
+
+        LocalDate date=LocalDate.of(2020,9,10);
+        LocalDate date1=LocalDate.of(2020,11,28);
+        long l = date1.toEpochDay() - date.toEpochDay();
+        System.out.println(l);
+        System.out.println(l*12);
+        BigDecimal bigDecimal=new BigDecimal(12);
+        BigDecimal bigDecimal1=new BigDecimal(12);
+        System.out.println(bigDecimal.subtract(bigDecimal1).toString());
+        System.out.println(bigDecimal.multiply(bigDecimal1).toString());
     }
 
 }
