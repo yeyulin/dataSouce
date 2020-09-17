@@ -10,7 +10,7 @@ public class Demo1 {
     //
   //   大对象10M -XX:PretenureSizeThreshold=10485760
   // -XX:+UseParNewGC -XX:+UseConcMarkSweepGC
-  // -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -Xloggc:gc.log
+  // -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -Xloggc:gc1.log
     public static void main(String[] args) {
         byte[] array1 = new byte[1024 * 1024];
         byte[] array2= new byte[1024 * 1024];
