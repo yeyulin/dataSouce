@@ -1,5 +1,8 @@
 package com.datasouce.timbersaw.sort;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import com.datasouce.test.SortTestHelper;
 
 /**
@@ -63,6 +66,21 @@ public class InsertSort {
             }
         }
     }
+    public void insertSort5(int[] arr) {
+        if (arr == null) {
+            return;
+        }
+        int length=arr.length;
+        for(int i=1;i<length;i++){
+            for(int j=i;j>0;j--){
+                if(arr[j-1]>arr[j]){
+                    int temp=arr[j];
+                    arr[j]=arr[j-1];
+                    arr[j-1]=temp;
+                }
+            }
+        }
+    }
 
     public static void main(String[] args) {
         int arr[] = SortTestHelper.generateRandomArray(10_000, 0, 10_000_000);
@@ -73,7 +91,7 @@ public class InsertSort {
         InsertSort insertSort = new InsertSort();
         SortTestHelper.sortTest("插入", arr3, insertSort::insertSort3);
         int arr4[] = SortTestHelper.generateRandomArray(10_000, 0, 10_000_000);
-        SortTestHelper.sortTest("插入", arr4, insertSort::insertSort4);
+        SortTestHelper.sortTest("插入", arr4, insertSort::insertSort5);
         //System.out.println(Arrays.toString(arr));
     }
 

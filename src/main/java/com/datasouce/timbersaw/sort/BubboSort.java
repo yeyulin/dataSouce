@@ -49,6 +49,16 @@ public class BubboSort {
             }
         }
     }
+    public void bubboSort4(int []arr){
+        int length=arr.length;
+        for(int i=0;i<length;i++){
+            for(int j=0;j<length-i-1;j++){
+                if(arr[j]>arr[j+1]){
+                    SortTestHelper.swap(arr,j,j+1);
+                }
+            }
+        }
+    }
 
     public static void main(String[] args) {
 //        int arr[] = SortTestHelper.generateRandomArray(10_000, 0, 10_000_000);
@@ -58,7 +68,7 @@ public class BubboSort {
 //        SortTestHelper.sortTest("插入", arr, InsertSort::sortTest);
         int arr1[] = SortTestHelper.generateRandomArray(10_000, 0, 10_000_000);
         BubboSort bubboSort=new BubboSort();
-        SortTestHelper.sortTest("冒泡", arr1, bubboSort::bubboSort3);
+        SortTestHelper.sortTest("冒泡", arr1, bubboSort::bubboSort4);
         //System.out.println(Arrays.toString(arr));
     }
 }
