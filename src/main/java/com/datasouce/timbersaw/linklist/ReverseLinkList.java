@@ -72,15 +72,14 @@ public class ReverseLinkList {
 
     public Node reverse5(Node head) {
         Node cur = head;
-        Node pre = null;
+        Node result = null;
         while (cur != null) {
             Node next = cur.next;
-            cur.next = pre;
-            pre = cur;
+            cur.next = result;
+            result = cur;
             cur = next;
 
-        }
-        return pre;
+        } return result;
     }
 
 
@@ -98,10 +97,6 @@ public class ReverseLinkList {
         System.out.println(reverse);
         Node reverse2 = reverseLinkList.reverse5(reverse);
         System.out.println(reverse2);
-
-        while (reverse.getNext() != null) {
-            System.out.println(reverse.getVal());
-            reverse = reverse.getNext();
-        }
     }
+
 }
