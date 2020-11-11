@@ -2,7 +2,10 @@ package com.datasouce.timbersaw.sort;
 
 import com.datasouce.test.SortTestHelper;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * @author yeyulin
@@ -239,9 +242,16 @@ public class MergeSort {
 //        SortTestHelper.sortTest("归并", arr, mergeSort::sortTest);
 //        int arr2[] = SortTestHelper.generateRandomArray(1_000_000, 0, 10_000_000);
 //        SortTestHelper.sortTest("归并", arr2, mergeSort::mergeSort2);
-        int arr3[] = SortTestHelper.generateRandomArray(1_000_000, 0, 10_000_000);
-        SortTestHelper.sortTest("归并", arr3, mergeSort::mergeSort5);
+//        int arr3[] = SortTestHelper.generateRandomArray(1_000_000, 0, 10_000_000);
+//        SortTestHelper.sortTest("归并", arr3, mergeSort::mergeSort5);
         //System.out.println(Arrays.toString(arr));
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMM");
+        Date date = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.MONTH, -1);      //当前月的上个月  （-1改为1的话，为取当前月                                                                                            的下个月）
+        System.out.println("========"+sdf.format( cal.getTime()));
     }
 
 }
