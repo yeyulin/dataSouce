@@ -122,6 +122,8 @@ public class Fifteen {
         System.out.println(lists);
 
         System.out.println(fifteen.threeSum2(nums));
+
+        System.out.println(895.56*2+1797.12+9322.39+7666.45);
     }
 
 }
