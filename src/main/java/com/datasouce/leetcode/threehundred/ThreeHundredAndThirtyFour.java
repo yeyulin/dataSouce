@@ -29,6 +29,7 @@ public class ThreeHundredAndThirtyFour {
         int[] nums = new int[]{1, 2, 3, 4, 5};
         System.out.println(threeHundredAndThirtyFour.increasingTriplet(nums));
         System.out.println(threeHundredAndThirtyFour.increasingTriplet(new int[]{2, 1, 5, 0, 4, 6}));
+
     }
 
 }
