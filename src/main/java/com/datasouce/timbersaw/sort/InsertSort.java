@@ -1,8 +1,5 @@
 package com.datasouce.timbersaw.sort;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import com.datasouce.test.SortTestHelper;
 
 /**
@@ -58,29 +55,30 @@ public class InsertSort {
         int length = arr.length;
         for (int i = 1; i < length; i++) {
             for (int j = i; j > 0; j--) {
-                if(arr[j-1]>arr[j]){
-                    int temp=arr[j];
-                    arr[j]=arr[j-1];
-                    arr[j-1]=temp;
+                if (arr[j - 1] > arr[j]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j - 1];
+                    arr[j - 1] = temp;
                 }
             }
         }
     }
+
     public void insertSort5(int[] arr) {
-        if (arr == null) {
+        if (arr == null || arr.length == 1) {
             return;
         }
-        int length=arr.length;
-        for(int i=1;i<length;i++){
-            for(int j=i;j>0;j--){
-                if(arr[j-1]>arr[j]){
-                    int temp=arr[j];
-                    arr[j]=arr[j-1];
-                    arr[j-1]=temp;
+        for (int i = 1; i < arr.length; i++) {
+            for (int j = i; j > 0; j--) {
+                if (arr[j - 1] > arr[j]) {
+                    int temp = arr[j - 1];
+                    arr[j - 1] = arr[j];
+                    arr[j] = temp;
                 }
             }
         }
     }
+
 
     public static void main(String[] args) {
         int arr[] = SortTestHelper.generateRandomArray(10_000, 0, 10_000_000);

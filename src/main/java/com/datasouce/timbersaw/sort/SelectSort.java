@@ -56,11 +56,27 @@ public class SelectSort {
         }
         int length = arr.length;
         for (int i = 0; i < length; i++) {
-            for(int j=0;j<length;j++){
-                if(arr[i]>arr[j]){
-                    int temp=arr[i];
-                    arr[i]=arr[j];
-                    arr[j]=temp;
+            for (int j = 0; j < length; j++) {
+                if (arr[i] > arr[j]) {
+                    int temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+
+    }
+
+    public void selectSort5(int[] arr) {
+        if (arr == null) {
+            return;
+        }
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i] > arr[j]) {
+                    int temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
                 }
             }
         }
@@ -75,7 +91,7 @@ public class SelectSort {
         SelectSort selectSort = new SelectSort();
         SortTestHelper.sortTest("选择", arr3, selectSort::selectSort3);
         int arr4[] = SortTestHelper.generateRandomArray(10_000, 0, 100000);
-        SortTestHelper.sortTest("选择", arr4, selectSort::selectSort3);
+        SortTestHelper.sortTest("选择", arr4, selectSort::selectSort5);
         //System.out.println(Arrays.toString(arr));
     }
 
